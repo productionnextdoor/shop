@@ -11,7 +11,7 @@ To set up a new project from this base repository, follow these steps:
 1. Clone the repository:
    ```sh
    git clone git@github.com:productionnextdoor/shop.git
-   cd pm-shopware6-base
+   cd shop
    ```
 2. Run the start script to create all necessary docker container
    ```sh
