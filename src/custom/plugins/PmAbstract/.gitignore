@@ -1,0 +1,21 @@
+### JetBrains
+.idea
+modules.xml
+*.ipr
+
+# Optional eslint cache
+.eslintcache
+
+### Linux
+*~
+
+# KDE directory preferences
+.directory
+
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
+
+### macOS
+.DS_Store
+.AppleDouble
+.LSOverride

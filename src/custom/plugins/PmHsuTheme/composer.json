@@ -1,0 +1,31 @@
+{
+  "name": "pm/hsu-theme",
+  "description": "Theme HSU Theme",
+  "type": "shopware-platform-plugin",
+  "version": "1.0.0",
+  "license": "n",
+  "authors": [
+    {
+      "name": "PM",
+      "role": "Devs"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "PmHsuTheme\\": "src/"
+    }
+  },
+  "require": {
+    "shopware/core": "~6.5.0|~6.6.0",
+    "pm/abstract": "^2.0.0"
+  },
+  "extra": {
+    "shopware-plugin-class": "PmHsuTheme\\PmHsuTheme",
+    "plugin-icon": "src/Resources/public/plugin.png",
+    "copyright": "(c) by PM",
+    "label": {
+      "de-DE": "PM HSU Theme",
+      "en-GB": "PM HSU Theme"
+    }
+  }
+}

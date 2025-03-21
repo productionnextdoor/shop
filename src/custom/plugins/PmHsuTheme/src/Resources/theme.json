@@ -1,0 +1,31 @@
+{
+  "name": "PmHsuTheme",
+  "author": "PM",
+  "views": [
+    "@Storefront",
+    "@Plugins",
+    "@PmHsuTheme"
+  ],
+  "style": [
+    "@Storefront",
+    "app/storefront/src/scss/base.scss"
+  ],
+  "script": [
+    "@Storefront",
+    "app/storefront/dist/storefront/js/pm-hsu-theme/pm-hsu-theme.js"
+  ],
+  "asset": [
+    "@Storefront",
+    "app/storefront/src/assets"
+  ],
+  "config": {
+    "fields": {
+      "sw-font-family-base": {
+        "value": "'Karla', sans-serif"
+      },
+      "sw-font-family-headline": {
+        "value": "'Karla', sans-serif"
+      }
+    }
+  }
+}

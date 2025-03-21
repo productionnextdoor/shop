@@ -1,0 +1,21 @@
+/*
+Helper functions
+==============================================
+*/
+
+$baseFontSize: 16 !default;
+
+// Strips unit from a value
+@function strip-unit($value) {
+    @return $value / ($value * 0 + 1);
+}
+
+// Convert PX to REM
+@function rem($pxValue) {
+  @return strip-unit($pxValue) / $baseFontSize * 1rem;
+}
+
+// Convert REM to PX
+@function px($remValue) {
+  @return strip-unit($remValue) * $baseFontSize * 1px;
+}

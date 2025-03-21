@@ -1,0 +1,54 @@
+volumes:
+  db_data:
+    name: ${PROJECT_NAME}-db
+
+services:
+  shopware:
+    image: ghcr.io/productionnextdoor/shopware-6:latest
+    container_name: "${PROJECT_NAME}-shop"
+    hostname: "${PROJECT_NAME}"
+    working_dir: /var/www/html
+    expose:
+      - 80
+    ports:
+      - "80:80"
+    volumes:
+      - ./src:/var/www/html
+    env_file:
+      - .env
+    environment:
+      NODE_OPTIONS: "--openssl-legacy-provider"
+      COMPOSER_HOME: /.composer
+      PHP_MEMORY_LIMIT: "4096M"
+
+  mysql:
+    image: mysql:8.4-oracle
+    container_name: "${PROJECT_NAME}-mysql"
+    expose:
+      - 3306
+    volumes:
+      - db_data:/var/lib/mysql
+    env_file:
+      - .env
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: "${PROJECT_NAME}-phpmyadmin"
+    environment:
+      PMA_HOSTS: ${MYSQL_HOST}
+      PMA_USER: root
+      PMA_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      TZ: ${TZ}
+      UPLOAD_LIMIT: 1G
+    expose:
+      - 80
+    ports:
+      - "127.0.0.1:8083:80"
+
+#  mailhog:
+#    image: mailhog/mailhog
+#    container_name: "${PROJECT_NAME}-mailhog"
+#    logging:
+#      driver: 'none'
+#    ports:
+#      - "127.0.0.1:8025:8025"

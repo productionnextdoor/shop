@@ -1,0 +1,31 @@
+{
+  "name": "pm/custom-fields",
+  "description": "PM Custom Fields",
+  "version": "1.0.0",
+  "license": "n",
+  "authors": [
+    {
+      "name": "PM",
+      "role": "Devs"
+    }
+  ],
+  "type": "shopware-platform-plugin",
+  "autoload": {
+    "psr-4": {
+      "PmCustomFields\\": "src/"
+    }
+  },
+  "require": {
+    "shopware/core": "~6.5.0|~6.6.0",
+    "pm/abstract": "^2.0.0"
+  },
+  "extra": {
+    "shopware-plugin-class": "PmCustomFields\\PmCustomFields",
+    "plugin-icon": "src/Resources/config/plugin.png",
+    "copyright": "(c) by PM",
+    "label": {
+      "de-DE": "PM Custom Fields",
+      "en-GB": "PM Custom Fields"
+    }
+  }
+}

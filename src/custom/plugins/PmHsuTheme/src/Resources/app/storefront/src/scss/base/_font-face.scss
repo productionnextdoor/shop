@@ -1,0 +1,127 @@
+/*
+Font face definition
+===========================================================
+Bingold font faces.
+*/
+
+$fontPath: '/bundles/pmhsutheme/fonts' !default;
+
+$font-weight-bold: 700;
+$font-weight-extra-bold: 800;
+$font-weight-extra-light: 200;
+$font-weight-light: 300;
+$font-weight-medium: 500;
+$font-weight-normal: normal;
+$font-weight-semi-bold: 600;
+
+/* Font face definition for Karla-Bold.ttf */
+@font-face {
+  font-family: 'Karla';
+  font-weight: $font-weight-bold;
+  font-style: normal;
+  src: url('#{$fontPath}/Karla-Bold.ttf') format('truetype');
+}
+
+/* Font face definition for Karla-BoldItalic.ttf */
+@font-face {
+  font-family: 'Karla';
+  font-weight: $font-weight-bold;
+  font-style: italic;
+  src: url('#{$fontPath}/Karla-BoldItalic.ttf') format('truetype');
+}
+
+/* Font face definition for Karla-ExtraBold.ttf */
+@font-face {
+  font-family: 'Karla';
+  font-weight: $font-weight-extra-bold;
+  font-style: normal;
+  src: url('#{$fontPath}/Karla-ExtraBold.ttf') format('truetype');
+}
+
+/* Font face definition for Karla-ExtraBoldItalic.ttf */
+@font-face {
+  font-family: 'Karla';
+  font-weight: $font-weight-extra-bold;
+  font-style: italic;
+  src: url('#{$fontPath}/Karla-ExtraBoldItalic.ttf') format('truetype');
+}
+
+/* Font face definition for Karla-ExtraLightItalic.ttf */
+@font-face {
+  font-family: 'Karla';
+  font-weight: $font-weight-extra-light;
+  font-style: italic;
+  src: url('#{$fontPath}/Karla-ExtraLightItalic.ttf') format('truetype');
+}
+
+/* Font face definition for Karla-Italic.ttf */
+@font-face {
+  font-family: 'Karla';
+  font-weight: $font-weight-normal;
+  font-style: italic;
+  src: url('#{$fontPath}/Karla-Italic.ttf') format('truetype');
+}
+
+/* Font face definition for Karla-ExtraLight.ttf */
+@font-face {
+  font-family: 'Karla';
+  font-weight: $font-weight-extra-light;
+  font-style: normal;
+  src: url('#{$fontPath}/Karla-ExtraLight.ttf') format('truetype');
+}
+
+/* Font face definition for Karla-Light.ttf */
+@font-face {
+  font-family: 'Karla';
+  font-weight: $font-weight-light;
+  font-style: normal;
+  src: url('#{$fontPath}/Karla-Light.ttf') format('truetype');
+}
+
+/* Font face definition for Karla-Medium.ttf */
+@font-face {
+  font-family: 'Karla';
+  font-weight: $font-weight-medium;
+  font-style: normal;
+  src: url('#{$fontPath}/Karla-Medium.ttf') format('truetype');
+}
+
+/* Font face definition for Karla-MediumItalic.ttf */
+@font-face {
+  font-family: 'Karla';
+  font-weight: $font-weight-medium;
+  font-style: italic;
+  src: url('#{$fontPath}/Karla-MediumItalic.ttf') format('truetype');
+}
+
+/* Font face definition for Karla-LightItalic.ttf */
+@font-face {
+  font-family: 'Karla';
+  font-weight: $font-weight-light;
+  font-style: italic;
+  src: url('#{$fontPath}/Karla-LightItalic.ttf') format('truetype');
+}
+
+/* Font face definition for Karla-Regular.ttf */
+@font-face {
+  font-family: 'Karla';
+  font-weight: $font-weight-normal;
+  font-style: normal;
+  src: url('#{$fontPath}/Karla-Regular.ttf') format('truetype');
+}
+
+/* Font face definition for Karla-SemiBold.ttf */
+@font-face {
+  font-family: 'Karla';
+  font-weight: $font-weight-semi-bold;
+  font-style: normal;
+  src: url('#{$fontPath}/Karla-SemiBold.ttf') format('truetype');
+}
+
+/* Font face definition for Karla-SemiBoldItalic.ttf */
+@font-face {
+  font-family: 'Karla';
+  font-weight: $font-weight-semi-bold;
+  font-style: italic;
+  src: url('#{$fontPath}/Karla-SemiBoldItalic.ttf') format('truetype');
+}

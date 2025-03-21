@@ -1,0 +1,30 @@
+{
+  "name": "pm/abstract",
+  "description": "PM Abstract Plugin",
+  "version": "2.1.0",
+  "license": "n",
+  "authors": [
+    {
+      "name": "PM",
+      "role": "Devs"
+    }
+  ],
+  "type": "shopware-platform-plugin",
+  "autoload": {
+    "psr-4": {
+      "PmAbstract\\": "src/"
+    }
+  },
+  "require": {
+    "shopware/core": "^6.5.0"
+  },
+  "extra": {
+    "shopware-plugin-class": "PmAbstract\\PmAbstract",
+    "plugin-icon": "src/Resources/public/plugin.png",
+    "copyright": "(c) by PM",
+    "label": {
+      "de-DE": "PM Abstract Plugin",
+      "en-GB": "PM Abstract Plugin"
+    }
+  }
+}

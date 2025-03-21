@@ -1,0 +1,30 @@
+{% sw_extends "@Storefront/storefront/page/product-detail/buy-widget-form.html.twig" %}
+
+{% block page_product_detail_buy_button %}
+    {% set pmLimitCartAddOptions = {
+        limitedApi: path('frontend.pm.checkout.limited')
+    } %}
+
+    <div class="d-grid">
+        <button class="btn btn-primary btn-buy"
+                title="{{ "detail.addProduct"|trans|striptags }}"
+                aria-label="{{ "detail.addProduct"|trans|striptags }}"
+                data-pm-limit-cart-add="true"
+                {# ludtwig-ignore html-string-quotation #}
+                data-pm-limit-cart-add-options='{{ pmLimitCartAddOptions|json_encode }}'
+        >
+            {{ "detail.addProduct"|trans|sw_sanitize }}
+        </button>
+    </div>
+{% endblock %}
+
+{% block page_product_detail_buy_button_container %}
+    {{ parent() }}
+
+    <div class="col-12 pm-limit-basket-note">
+        {% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
+            type: "warning",
+            content: "pm.limitBasket.note"|trans|sw_sanitize
+        } %}
+    </div>
+{% endblock %}
