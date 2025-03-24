@@ -1,0 +1,96 @@
+name: PROD Deployment
+
+on:
+  push:
+    paths:
+      - 'src/public/**'
+    branches:
+      - 'master'
+
+  workflow_dispatch:
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Notifying on start
+      uses: pmagentur/pm_slack_notifier@v0.2
+      env:
+        SLACK_CHANNEL: ${{ secrets.SLACK_CHANNEL }}
+        SLACK_COLOR: '#FFA500'
+        SLACK_ICON: https://avatars1.githubusercontent.com/u/63812035?s=200&v=4
+        SLACK_MESSAGE: 'Deployment to PROD is started'
+        SLACK_TITLE: 'Deployment to PROD'
+        SLACK_USERNAME: "PM's whisperer"
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+    
+    - name: Checking out the repo
+      uses: actions/checkout@v2
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: 8.3
+
+    - name: Install composer      
+      env:
+        SSH_KEY: ${{ secrets.SSH_KEY }}
+
+      run: |
+         sudo apt-get update
+         sudo curl -sS https://getcomposer.org/installer | php -- --version=2.4.4
+         sudo mv composer.phar /usr/local/bin/composer
+         pwd
+         php -v
+         mkdir ~/.ssh
+         echo -e "${SSH_KEY}" >~/.ssh/id_rsa
+         chmod 600 ~/.ssh/id_rsa
+         composer --verbose
+         cd ./src/public && composer install
+    
+    - name: Building PM Docker Image
+      uses: pmagentur/pm_docker_builder@v0.2
+      env:
+        USERNAME: ${{ secrets.Docker_user }}
+        PASSWORD: ${{ secrets.Docker_pass }}
+        REGISTRY: ${{ vars.DOCKER_REGISTRY }}
+        REPOSITORY: ${{ vars.DOCKER_REPOSITORY }}
+        TAG: 'prod' 
+        DOCKERFILE_PATH: 'src/.'
+        CREATE_BACKUP: 'True'
+
+
+  failure:
+    needs: [build]
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+    - name: Slack notifying on error
+      uses: pmagentur/pm_slack_notifier@v0.2
+      env:
+        SLACK_CHANNEL: ${{ secrets.SLACK_CHANNEL }}
+        SLACK_COLOR: '#FF0000'
+        SLACK_ICON: https://avatars1.githubusercontent.com/u/63812035?s=200&v=4
+        SLACK_MESSAGE: 'Deployment failed :x:'
+        SLACK_TITLE: 'Deployment to PROD'
+        SLACK_USERNAME: "PM's whisperer"
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+  successed:
+    needs: [build]
+    if: success()
+    runs-on: ubuntu-latest
+    steps:
+    - name: Slack notifying on success
+      uses: pmagentur/pm_slack_notifier@v0.2
+      env:
+        SLACK_CHANNEL: ${{ secrets.SLACK_CHANNEL }}
+        SLACK_COLOR: '#006400'
+        SLACK_ICON: https://avatars1.githubusercontent.com/u/63812035?s=200&v=4
+        SLACK_MESSAGE: 'Successfully deployed :white_check_mark:'
+        SLACK_TITLE: 'Deployment to PROD'
+        SLACK_USERNAME: "PM's whisperer"
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }} 
