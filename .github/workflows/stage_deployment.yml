@@ -50,8 +50,10 @@ jobs:
           Docker_pass: ${{ secrets.PM_DOCKER_PASSWORD }}
         run: |
           # Login to GitHub Container Registry
-          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+          #echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
           # Login to Azure Container Registry
+          echo "Docker login: ${Docker_login}"
+          echo "Docker password: ${Docker_pass}"
           docker login -u ${Docker_login} -p ${Docker_pass} pmdocker.azurecr.io
           # Pull base image and build
           docker pull pmdocker.azurecr.io/pm-shopware6:php8.3
