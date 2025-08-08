@@ -1,4 +1,4 @@
-FROM pmdocker.azurecr.io/pm-shopware6:php8.3
+FROM ghcr.io/productionnextdoor/pm-shopware6:php8.3
 
 ADD ./public /var/www/html
 
