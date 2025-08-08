@@ -42,7 +42,7 @@ jobs:
          echo -e "${SSH_KEY}" >~/.ssh/id_rsa
          chmod 600 ~/.ssh/id_rsa
          composer --verbose
-         cd ./src/public && composer install
+         cd ./src && composer install
 
       - name: Build Docker image
         env:
