@@ -45,11 +45,14 @@ jobs:
            cd ./src && composer install
 
       - name: Build Docker image
+        env:
+          Docker_login: ${{ secrets.PM_DOCKER_USERNAME }}
+          Docker_pass: ${{ secrets.PM_DOCKER_PASSWORD }}
         run: |
           # Login to GitHub Container Registry
           echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
           # Login to Azure Container Registry
-          echo "${{ secrets.PM_DOCKER_PASSWORD }}" | docker login pmdocker.azurecr.io -u ${{ secrets.PM_DOCKER_USERNAME }} --password-stdin
+          docker -u ${Docker_login} -p ${Docker_pass} login pmdocker.azurecr.io
           # Pull base image and build
           docker pull pmdocker.azurecr.io/pm-shopware6:php8.3
           docker build -f ./src/Dockerfile -t ghcr.io/${{ github.repository_owner }}/pm-hsu-shop:stage -t ghcr.io/${{ github.repository_owner }}/pm-hsu-shop:stage-${{ env.BACKUP_TAG }} .
