@@ -2,6 +2,7 @@ FROM ghcr.io/productionnextdoor/pm-shopware6:php8.3
 
 ADD ./public /var/www/html
 
+
 #nginx confs
 COPY ./configs/.htpasswd /etc/nginx/.htpasswd
 COPY ./configs/nginx_dev.conf /etc/nginx/sites-enabled/default.conf
