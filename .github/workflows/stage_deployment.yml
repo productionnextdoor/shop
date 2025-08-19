@@ -39,7 +39,7 @@ jobs:
           mkdir ~/.ssh
           echo -e "${SSH_KEY}" >~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          cd ./src && composer config bearer.packages.shopware.com $SHOPWARE_STORE_TOKEN && composer install --no-scripts
+          cd ./src && composer install --no-scripts
 
       - name: Build Docker image
         env:
