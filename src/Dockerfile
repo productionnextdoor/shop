@@ -4,8 +4,8 @@ ADD ./src/public /var/www/html
 
 
 #nginx confs
-COPY ./src/configs/.htpasswd /etc/nginx/.htpasswd
-COPY ./src/configs/nginx_dev.conf /etc/nginx/sites-enabled/default.conf
+#COPY ./src/configs/.htpasswd /etc/nginx/.htpasswd
+COPY ./src/configs/nginx_stage.conf /etc/nginx/sites-enabled/default.conf
 
 #symfony confs
 ADD ./src/config/packages/framework.yml /var/www/html/config/packages/framework.yml
