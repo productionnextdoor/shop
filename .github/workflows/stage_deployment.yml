@@ -28,21 +28,18 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: 8.3
-      
-      - name: Install composer      
+          tools: composer:2.4.4
+
+      - name: Prepare Composer Repositories
         env:
           SSH_KEY: ${{ secrets.SSH_KEY }}
+          SHOPWARE_STORE_TOKEN: ${{ secrets.SHOPWARE_STORE_TOKEN }}
+          LOCK_DSN: "flock"
         run: |
-         sudo apt-get update
-         sudo curl -sS https://getcomposer.org/installer | php -- --version=2.4.4
-         sudo mv composer.phar /usr/local/bin/composer
-         pwd
-         php -v
-         mkdir ~/.ssh
-         echo -e "${SSH_KEY}" >~/.ssh/id_rsa
-         chmod 600 ~/.ssh/id_rsa
-         composer --verbose
-         cd ./src && composer install
+          mkdir ~/.ssh
+          echo -e "${SSH_KEY}" >~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          cd ./src && composer config bearer.packages.shopware.com $SHOPWARE_STORE_TOKEN && composer install --no-scripts
 
       - name: Build Docker image
         env:
