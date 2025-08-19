@@ -8,6 +8,6 @@ COPY ./configs/.htpasswd /etc/nginx/.htpasswd
 COPY ./configs/nginx_dev.conf /etc/nginx/sites-enabled/default.conf
 
 #symfony confs
-ADD ./configs/packages/framework.yaml /var/www/html/config/packages/framework.yaml
+ADD ./config/packages/framework.yaml /var/www/html/config/packages/framework.yaml
 
 RUN sudo chown -R www-data:www-data /var/www/html
